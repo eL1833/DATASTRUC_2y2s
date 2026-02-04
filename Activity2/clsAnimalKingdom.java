@@ -1,13 +1,15 @@
 package DATASTRUC_Activities.Activity2;
 
 public abstract class clsAnimalKingdom {
+    //abstract classes cannot instantiate objects, its purpose is only to extend from
 
+    //abstract classes usually contains atleast one empty abstract methods.no curly brackets/statements, just semi-colon
     public abstract void displayInfo();
 
     protected String name, habitat, color;
     protected int age;
 
-    //superclass constructor: initializes the data fields
+    //superclass constructor: initializes the data fields, doesn't require arguments
     public clsAnimalKingdom(){
         name = " ";
         habitat =" ";
@@ -15,7 +17,7 @@ public abstract class clsAnimalKingdom {
         age = 0;
     }
 
-    //another constructor
+    //another constructor that requires arguments
     public clsAnimalKingdom(String name, String h, String c, int a){
         this.name = name;
         habitat = h;
