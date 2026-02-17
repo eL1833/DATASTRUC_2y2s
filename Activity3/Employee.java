@@ -1,41 +1,35 @@
-public class Employee extends Person{
+package DATASTRUC_Activities.Activity2;
+
+public abstract class Person{
    
-   protected int idNo;
-   protected int hoursWrk;
-   protected int hourlyRate;
-   protected String position;
-   protected String department;
-   
-   public int getIdNo(){
-      return idNo;
+   protected String lastname;
+   protected String firstname;
+
+   public Person(){
+      lastname = " ";
+      firstname = " ";
    }
-   public int getHoursWrk(){
-      return hoursWrk;
-   }
-   public int getHourlyRate(){
-      return hourlyRate;
-   }
-   public String getPosition(){
-      return position;
-   }
-   public String getDepartment(){
-      return department;
+
+   public Person(String firstname, String lastname){
+      this.firstname = firstname;
+      this.lastname = lastname;
    }
    
-   public void setIdNo(int idNo){
-      this.idNo = idNo;
+   public String getLastName(){
+      return lastname;
    }
-   public void setHoursWrk(int hoursWrk){
-      this.hoursWrk = hoursWrk;
+   public String getFirstName(){
+      return firstname;
    }
-   public void setHourlyRate(int hourlyRate){
-      this.hourlyRate = hourlyRate;
+
+   public void setLastName(String lastname){
+      this.lastname = lastname;
    }
-   public void setPosition(int position){
-      this.position = position;
+   public void setFirstName(String firstname){
+      this.firstname = firstname;
    }
-   public void setDepartment(int department){
-      this.department = department;
-   }
-   
+
+   public String displayInfo(){
+      return " "+lastname+", "+firstname;
+   };
 }
