@@ -1,14 +1,35 @@
-public abstract class Person{
+package DATASTRUC_Activities.Activity2;
 
-   public abstract void displayInfo();
+public abstract class Person{
    
    protected String lastname;
    protected String firstname;
+
+   public Person(){
+      lastname = " ";
+      firstname = " ";
+   }
+
+   public Person(String firstname, String lastname){
+      this.firstname = firstname;
+      this.lastname = lastname;
+   }
    
-   public void getLastName(){
-      return String lastname;
+   public String getLastName(){
+      return lastname;
    }
-   public void getFirstName(){
-      return String firstname;
+   public String getFirstName(){
+      return firstname;
    }
+
+   public void setLastName(String lastname){
+      this.lastname = lastname;
+   }
+   public void setFirstName(String firstname){
+      this.firstname = firstname;
+   }
+
+   public String displayInfo(){
+      return " "+lastname+", "+firstname;
+   };
 }
