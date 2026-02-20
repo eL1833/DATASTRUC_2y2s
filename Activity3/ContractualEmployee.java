@@ -19,7 +19,19 @@ public class ContractualEmployee extends Employee{
 
     @Override 
     public double iComputeSalary(){
-        return (getHoursWrk() * getHourlyRate() + overtime);
+        double overtimepay;
+        double overtimehrs;
+        double regularPay;
+        final double regularHrs = 8;
+
+        if(getHoursWrk() <= regularHrs){
+            return getHoursWrk()*getHourlyRate();//9*90 = 810
+        } else {
+            regularPay = regularHrs*getHourlyRate();//8*90 = 720
+            overtimehrs = getHoursWrk() - regularHrs;//9-8 = 1
+            overtimepay = overtimehrs * (getHourlyRate()*getOvertime());//1*(90*1.25) = 112.5
+            return regularPay + overtimepay; //720 + 112.5 = 832.5
+        }
+
     }
 }
-
