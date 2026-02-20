@@ -6,9 +6,9 @@ public abstract class Person{
    protected String firstname;
 
    public Person(){
-      lastname = " ";
+      lastname = "";
       firstname = " ";
-   }
+   } 
 
    public Person(String firstname, String lastname){
       this.firstname = firstname;
