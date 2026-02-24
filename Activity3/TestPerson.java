@@ -22,10 +22,5 @@ public class TestPerson {
         System.out.println("------STUDENT-NAME------|-------COURSE-------");
         System.out.println(student.displayInfo()+"            |  "+student.getCourse());
         System.out.println("");
-        
-        
-
-
-
     }
 }
