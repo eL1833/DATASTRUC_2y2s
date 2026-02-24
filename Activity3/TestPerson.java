@@ -13,11 +13,15 @@ public class TestPerson {
         Student student = new Student("Leo", "Benson", 
                                         "042313", "Civil Engineering", "Engineering");  
                                         
-        System.out.println("----------NAME----------|-------SALARY-------");
+        System.out.println("----REG-EMPLOYEE-NAME---|-------SALARY-------");
         System.out.println(regularEmployee.displayInfo()+"      |  "+regularEmployee.iComputeSalary());
+        System.out.println("");
+        System.out.println("----CON-EMPLOYEE-NAME---|-------SALARY-------");
         System.out.println(contractualEmployee.displayInfo()+"          |  "+contractualEmployee.iComputeSalary());
+        System.out.println("");
         System.out.println("------STUDENT-NAME------|-------COURSE-------");
         System.out.println(student.displayInfo()+"            |  "+student.getCourse());
+        System.out.println("");
         
         
 
