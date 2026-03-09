@@ -9,35 +9,31 @@ namespace SimpleAdditionCalculatorApp
         {
             InitializeComponent();
 
-            // Add "+" to the operator dropdown
-            operatorCmb.Items.Add("+");
-            operatorCmb.SelectedIndex = 0;
+            cmboperator.Items.Add("+");
+            cmboperator.SelectedIndex = 0;
 
-            // Hide error label initially
             errorLbl.Text = "";
         }
 
         private void calculateBtn_Click(object sender, EventArgs e)
         {
-            // Check if any input field is empty
-            if (string.IsNullOrWhiteSpace(operand1Txt.Text) || 
+            if (string.IsNullOrWhiteSpace(operand1Txt.Text) ||
                 string.IsNullOrWhiteSpace(operand2Txt.Text))
             {
                 errorLbl.Text = "Please fill in both input fields.";
+                operand1Txt.Text = "";
+                operand2Txt.Text = "";
+                resultLbl.Text = "";
                 return;
             }
 
-            // Clear error message
             errorLbl.Text = "";
 
-            // Convert inputs to numbers
             double operand1 = Convert.ToDouble(operand1Txt.Text);
             double operand2 = Convert.ToDouble(operand2Txt.Text);
 
-            // Perform addition
             double result = operand1 + operand2;
 
-            // Display result
             resultLbl.Text = result.ToString();
         }
     }
