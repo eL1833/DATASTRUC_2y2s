@@ -2,17 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace SimpleCurrencyConverter
 {
-    public partial class SimpleCurrencyConverter : Form
+    public partial class Form1 : Form
     {
-        // Master Currency List
         private List<string> currencies = new List<string>()
         {
             "PHP", "EUR", "CAD", "USD"
         };
 
-        public SimpleCurrencyConverter()
+        public Form1()
         {
             InitializeComponent();
             InitializeComboBoxes();
@@ -20,9 +19,7 @@ namespace WindowsFormsApp1
 
         private void InitializeComboBoxes()
         {
-            currencyFr.DropDownStyle = ComboBoxStyle.DropDownList;
-            currencyTo.DropDownStyle = ComboBoxStyle.DropDownList;
-
+       
             currencyFr.Items.AddRange(currencies.ToArray());
             currencyTo.Items.AddRange(currencies.ToArray());
 
@@ -33,13 +30,11 @@ namespace WindowsFormsApp1
             UpdateCurrencyTo();
         }
 
-        // When "From" changes
         private void currencyFr_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateCurrencyTo();
         }
 
-        // When "To" changes
         private void currencyTo_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateCurrencyFrom();
@@ -85,11 +80,15 @@ namespace WindowsFormsApp1
             currencyFr.SelectedIndexChanged += currencyFr_SelectedIndexChanged;
         }
 
-        private void convertBtn_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(amount.Text))
             {
                 warninglbl.Text = "Please enter an amount.";
+                amount2.Text = "";
+                currencyFr2.Text = "";
+                currencyTo2.Text = "";
+                convertedAmt.Text = "";
                 return;
             }
             else
@@ -101,7 +100,8 @@ namespace WindowsFormsApp1
             {
                 warninglbl.Text = "Enter a valid number.";
                 return;
-            } else
+            }
+            else
             {
                 warninglbl.Text = "";
             }
@@ -115,31 +115,25 @@ namespace WindowsFormsApp1
             string fromSymbol = GetSymbol(from);
             string toSymbol = GetSymbol(to);
 
-            // OUTPUT DISPLAY (matches your picture)
             amount2.Text = fromSymbol + inputAmount.ToString("N2");
             currencyFr2.Text = from;
             currencyTo2.Text = to;
             convertedAmt.Text = toSymbol + converted.ToString("N2");
         }
 
-        // Exchange Rates relative to PHP
         private double GetRate(string from, string to)
         {
             Dictionary<string, double> rates = new Dictionary<string, double>()
-            {
-                { "PHP", 1 },
-                { "USD", 55 },
-                { "EUR", 60 },
-                { "CAD", 42 }
-            };
+    {
+        { "PHP", 1 },
+        { "USD", 55 },
+        { "EUR", 60 },
+        { "CAD", 42 }
+    };
 
-            double fromRate = rates[from];
-            double toRate = rates[to];
-
-            return toRate / fromRate;
+            return rates[from] / rates[to];
         }
 
-        // Currency Symbols
         private string GetSymbol(string currency)
         {
             switch (currency)
