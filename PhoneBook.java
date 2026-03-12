@@ -1,30 +1,9 @@
-package DATASTRUC_Activities;
 import java.util.*;
 
 class PhoneContact {
-    String firstname, lastname, company, alias, phone, email;
-
-    public PhoneContact(String firstname, String lastname, String company, String alias, String phone, String email){
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.company = company;
-        this.alias = alias;
-        this.phone = phone;
-        this.email = email;
-    }
-
-    public void display(){
-        System.out.println("=== Display ===");
-        System.out.println("Name: "+firstname+" "+lastname);
-        System.out.println("Company: "+company);
-        System.out.println("Alias: "+alias);
-        System.out.println("Phone: "+phone);
-        System.out.println("Email: "+email);
-        System.out.println();
-    }
 
     static Scanner input = new Scanner(System.in);
-    static ArrayList<PhoneContact> contacts = new ArrayList<>();
+    static ArrayList<PhoneBook> contacts = new ArrayList<>();
 
     public static void addContact(){
         System.out.println("=== Add Contact ===");
@@ -41,7 +20,7 @@ class PhoneContact {
         System.out.print("Email: ");
         String email = input.nextLine();
 
-        contacts.add(new PhoneContact(fname,lname,company,alias,phone,email));
+        contacts.add(new PhoneBook(fname,lname,company,alias,phone,email));
         System.out.println("Contact added successfully!");
         System.out.println();
     }
@@ -51,7 +30,7 @@ class PhoneContact {
         System.out.print("Enter the fullname to update: ");
         String name = input.nextLine().trim();
 
-        for(PhoneContact c : contacts){
+        for(PhoneBook c : contacts){
             String fullname = c.firstname +" "+ c.lastname;
 
             if((fullname.equalsIgnoreCase(name))){
@@ -82,7 +61,7 @@ class PhoneContact {
         System.out.print("Enter the fullname to search: ");
         String name = input.nextLine().trim();
 
-        for(PhoneContact c : contacts){
+        for(PhoneBook c : contacts){
             String fullname = c.firstname +" "+ c.lastname;
             if(fullname.equalsIgnoreCase(name)){
                 c.display();
@@ -98,7 +77,7 @@ class PhoneContact {
         boolean found = false;
             
         for(int i = 0; i < contacts.size(); i++){
-            PhoneContact c = contacts.get(i);
+            PhoneBook c = contacts.get(i);
             String fullname = c.firstname +" "+ c.lastname;
 
             if(fullname.equalsIgnoreCase(name)){
@@ -119,12 +98,40 @@ class PhoneContact {
         if(contacts.isEmpty()){
             System.out.print("No Contacts!");
         } else {
-            contacts.forEach(PhoneContact::display);
+            contacts.forEach(PhoneBook::display);
         }
         System.out.println();
     }
 
+   
+
+}
+
+class PhoneBook{
+
+   String firstname, lastname, company, alias, phone, email;
+
+    public PhoneBook(String firstname, String lastname, String company, String alias, String phone, String email){
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.company = company;
+        this.alias = alias;
+        this.phone = phone;
+        this.email = email;
+    }
+    
+     public void display(){
+        System.out.println("=== Display ===");
+        System.out.println("Name: "+firstname+" "+lastname);
+        System.out.println("Company: "+company);
+        System.out.println("Alias: "+alias);
+        System.out.println("Phone: "+phone);
+        System.out.println("Email: "+email);
+        System.out.println();
+    }
+
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
         int choice;
         do {
             System.out.println("=== Phone Book ===");
@@ -134,17 +141,15 @@ class PhoneContact {
             System.out.println();
 
             switch (choice) {
-                case 1 -> addContact();
-                case 2 -> updateContact();
-                case 3 -> searchContact();
-                case 4 -> deleteContact();
-                case 5 -> displayAllContact();
+                case 1 -> PhoneContact.addContact();
+                case 2 -> PhoneContact.updateContact();
+                case 3 -> PhoneContact.searchContact();
+                case 4 -> PhoneContact.deleteContact();
+                case 5 -> PhoneContact.displayAllContact();
                 case 0 -> System.out.println("You've exited from Phone Book!");
                 default -> System.out.println("Invalid choice.\n");
             }
         } while (choice != 0);
         
     }
-
 }
-
