@@ -1,4 +1,3 @@
-package DATASTRUC_Activities;
 
 class Benson_gradeBook {
 
@@ -18,14 +17,18 @@ class Benson_gradeBook {
                 {87, 93, 73}};
 
         //initialize values sa lowest and highest
-        int lowest = scores[0][0] ;
+        int lowest = scores[0][0];
         int highest = scores[0][0];
                             
         System.out.println("Welcome to the grade book for \nCS101 Introduction to C++ Programming!");
-        System.out.println();
-        System.out.println("The grades are:");
-        System.out.println();
-        System.out.println("Student   Test1  Test2  Test3  Average");
+        System.out.println("\nThe grades are:");
+        System.out.print("\nStudent   ");
+
+         for (int i = 0; i < scores[0].length; i++) {
+             System.out.print("Test" + (i + 1) + "  ");
+         }
+         
+         System.out.println("Average");
         
         //i-loop una ang student row, then ang test column dayon
         for(int i = 0; i < scores.length; i++){
@@ -41,7 +44,7 @@ class Benson_gradeBook {
                 sum += scores[i][j];
             }
             
-            double average = sum/ 3.0;
+            double average = sum/ (double)scores[i].length;
             System.out.printf("%.2f",average);
             System.out.println();
         }
