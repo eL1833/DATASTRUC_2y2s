@@ -1,31 +1,45 @@
-// BinaryTree.java
 import java.util.Scanner;
 
 public class BinaryTree {
 
     private Node root;
 
-    // Constructor
     public BinaryTree() {
-        root = null;
+        root = null;//initialized root to empty
     }
 
-    // getRoot()
     public Node getRoot() {
         return root;
     }
 
-    // createNode()
     public Node createNode(int value) {
         return new Node(value);
     }
+    
+    
+//add
+      public void getInput() {
+   
+         Scanner sc = new Scanner(System.in);
+   
+         System.out.print("How many values to insert? ");
+         int n = sc.nextInt();
+   
+         for (int i = 1; i <= n; i++) {
+   
+          System.out.print("Enter value " + i + ": ");
+          int value = sc.nextInt();
+   
+          insert(value);//proceed to insert method
+          }
+       }
 
-    // insert()
+
+//insert 
     public void insert(int value) {
 
         Node newNode = createNode(value);
 
-        // If tree is empty
         if (root == null) {
             root = newNode;
             return;
@@ -38,52 +52,30 @@ public class BinaryTree {
 
             parent = current;
 
-            // Go to left subtree
             if (value < current.getData()) {
                 current = current.getLeft();
             }
 
-            // Go to right subtree
             else if (value > current.getData()) {
                 current = current.getRight();
             }
 
-            // Duplicate value
             else {
                 System.out.println("Duplicate value not allowed.");
                 return;
             }
         }
 
-        // Insert to left
         if (value < parent.getData()) {
             parent.setLeft(newNode);
         }
 
-        // Insert to right
         else {
             parent.setRight(newNode);
         }
     }
 
-    // getInput()
-    public void getInput() {
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("How many values to insert? ");
-        int n = sc.nextInt();
-
-        for (int i = 1; i <= n; i++) {
-
-            System.out.print("Enter value " + i + ": ");
-            int value = sc.nextInt();
-
-            insert(value);
-        }
-    }
-
-    // searchValue()
+//search   
     public void searchValue(int value) {
 
         Node current = root;
@@ -91,7 +83,6 @@ public class BinaryTree {
 
         while (current != null) {
 
-            // Value found
             if (current.getData() == value) {
 
                 if (path.equals("")) {
@@ -104,7 +95,6 @@ public class BinaryTree {
                 return;
             }
 
-            // Move left
             if (value < current.getData()) {
 
                 current = current.getLeft();
@@ -116,7 +106,6 @@ public class BinaryTree {
                 }
             }
 
-            // Move right
             else {
 
                 current = current.getRight();
@@ -132,7 +121,6 @@ public class BinaryTree {
         System.out.println(value + " is NOT found in the tree.");
     }
 
-    // displayTree()
     public void displayTree() {
 
         System.out.println("\nTree Elements (Preorder Traversal):");
@@ -142,18 +130,12 @@ public class BinaryTree {
         System.out.println();
     }
 
-    // preorder traversal
     private void preorder(Node node) {
 
         if (node != null) {
 
-            // Root
             System.out.print(node.getData() + " ");
-
-            // Left
             preorder(node.getLeft());
-
-            // Right
             preorder(node.getRight());
         }
     }
